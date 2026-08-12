@@ -1,37 +1,63 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>gerenciador de senhas</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gerador de Senhas</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <div class="head">
-<h1>gerenciador de senhas</h1>
+
+  <main class="card-container">
+    <!-- Título Principal -->
+    <h1 class="title">Gerador de senhas</h1>
+
+    <!-- Campo do resultado da senha -->
+    <div class="password-field"></div>
+
+    <div class="content-body">
+      <!-- Coluna da Esquerda: Controles -->
+      <div class="left-column">
+        <div class="section-group">
+          <label class="label">nível de segurança</label>
+          <div class="strength-bar">
+            <div class="strength-fill"></div>
+          </div>
         </div>
 
-        <div class="display-box">
-            <span id="passaword"<Senha>/span
-                <button class="copy-btn" id="copy-btn" title="copiar">copiar</button>
-            </div>
-
-<div class="custom-section">
-    <h2>Personalize sua senha</h2>
-
-    >div class="custom-section">
-      <span class="control-label">Número de caracteres</span>
-                
-      <div class="counter">
-        <button id="decrement">-</button>
-        <span id="lengthVal">12</span>
-        <button id="increment">+</button>
+        <div class="section-group">
+          <label class="label">numero de caracteres</label>
+          <div class="counter-control">
+            <button class="btn-counter" type="button">-</button>
+            <span class="counter-value">3</span>
+            <button class="btn-counter" type="button">+</button>
+          </div>
+        </div>
       </div>
 
-      <button class=""generate-btn" id="generate-btn"> Gerar Nova Senha</button>
-</div>
+      <!-- Coluna da Direita: Requisitos -->
+      <div class="right-column">
+        <ul class="requirements-list">
+          <li>
+            <span class="dot"></span>
+            <span>no mínimo 8 caracteres</span>
+          </li>
+          <li>
+            <span class="dot"></span>
+            <span>uma letra maiuscula</span>
+          </li>
+          <li>
+            <span class="dot"></span>
+            <span>um caractere especial, como @,#,$ ou !</span>
+          </li>
+          <li>
+            <span class="dot"></span>
+            <span>uma letra minuscula</span>
+          </li>
+        </ul>
+      </div>
     </div>
-    <script src="script.js"><</script>
+  </main>
+
 </body>
 </html>
