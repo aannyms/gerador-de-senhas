@@ -489,3 +489,38 @@ body {
     }
 
 }
+
+.password-field {
+    width: 100%;
+    height: 55px;
+
+    display: flex;
+    align-items: center;
+
+    background-color: #728c00;
+
+    border-radius: 30px;
+
+    padding: 0 20px;
+}
+
+.password-field input {
+    width: 100%;
+    height: 100%;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+
+    color: #ffffff;
+
+    font-size: 18px;
+    font-weight: 600;
+
+    cursor: text;
+}
+
+.password-field input::placeholder {
+    color: rgba(255, 255, 255, 0.8);
+}
