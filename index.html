@@ -7,57 +7,136 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  <main class="card-container">
-    <!-- Título Principal -->
-    <h1 class="title">Gerador de senhas</h1>
-
-    <!-- Campo do resultado da senha -->
-    <div class="password-field"></div>
-
-    <div class="content-body">
-      <!-- Coluna da Esquerda: Controles -->
-      <div class="left-column">
-        <div class="section-group">
-          <label class="label">nível de segurança</label>
-          <div class="strength-bar">
-            <div class="strength-fill"></div>
-          </div>
-        </div>
-
-        <div class="section-group">
-          <label class="label">numero de caracteres</label>
-          <div class="counter-control">
-            <button class="btn-counter" type="button">-</button>
-            <span class="counter-value">3</span>
-            <button class="btn-counter" type="button">+</button>
-          </div>
-        </div>
+  <div class="outer-container">
+    <div class="card">
+      <h1 class="title">Gerador de senhas</h1>
+      
+      <!-- Display da senha gerada -->
+      <div class="password-display" id="passwordDisplay" title="Clique para copiar">
+        SuaSenhaAqui
       </div>
 
-      <!-- Coluna da Direita: Requisitos -->
-      <div class="right-column">
-        <ul class="requirements-list">
-          <li>
-            <span class="dot"></span>
-            <span>no mínimo 8 caracteres</span>
-          </li>
-          <li>
-            <span class="dot"></span>
-            <span>uma letra maiuscula</span>
-          </li>
-          <li>
-            <span class="dot"></span>
-            <span>um caractere especial, como @,#,$ ou !</span>
-          </li>
-          <li>
-            <span class="dot"></span>
-            <span>uma letra minuscula</span>
-          </li>
-        </ul>
+      <div class="controls-grid">
+        <div class="left-controls">
+          <div class="control-group">
+            <span class="label">nível de segurança</span>
+            <div class="strength-meter">
+              <div class="strength-bar" id="strengthBar"></div>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <span class="label">número de caracteres</span>
+            <div class="counter-container">
+              <button id="btnMinus" class="counter-btn" type="button">-</button>
+              <span id="charCount" class="counter-value">8</span>
+              <button id="btnPlus" class="counter-btn" type="button">+</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="right-options">
+          <label class="option-item">
+            <input type="checkbox" id="chkLength" checked disabled>
+            no mínimo 8 caracteres
+          </label>
+          <label class="option-item">
+            <input type="checkbox" id="chkUpper" checked>
+            uma letra maiúscula
+          </label>
+          <label class="option-item">
+            <input type="checkbox" id="chkSymbol" checked>
+            um caractere especial, como @,#,$ ou !
+          </label>
+          <label class="option-item">
+            <input type="checkbox" id="chkLower" checked>
+            uma letra minúscula
+          </label>
+        </div>
       </div>
     </div>
-  </main>
+  </div>
 
+  <!-- Lógica de funcionamento embutida diretamente no HTML -->
+  <script>
+    const passwordDisplay = document.getElementById('passwordDisplay');
+    const charCountEl = document.getElementById('charCount');
+    const btnMinus = document.getElementById('btnMinus');
+    const btnPlus = document.getElementById('btnPlus');
+    const strengthBar = document.getElementById('strengthBar');
+
+    const chkUpper = document.getElementById('chkUpper');
+    const chkSymbol = document.getElementById('chkSymbol');
+    const chkLower = document.getElementById('chkLower');
+
+    let charCount = 8;
+
+    const upperChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const lowerChars = 'abcdefghijklmnopqrstuvwxyz';
+    const symbolChars = '!@#$%^&*()_+-=[]{}|;:,.<>?';
+    const numberChars = '0123456789';
+
+    function generatePassword() {
+      let allowedChars = numberChars;
+      if (chkUpper.checked) allowedChars += upperChars;
+      if (chkLower.checked) allowedChars += lowerChars;
+      if (chkSymbol.checked) allowedChars += symbolChars;
+
+      let password = '';
+      for (let i = 0; i < charCount; i++) {
+        const randomIndex = Math.floor(Math.random() * allowedChars.length);
+        password += allowedChars[randomIndex];
+      }
+
+      passwordDisplay.textContent = password;
+      updateStrength();
+    }
+
+    function updateStrength() {
+      let score = 0;
+      if (charCount >= 8) score += 25;
+      if (charCount >= 12) score += 25;
+      if (chkUpper.checked) score += 15;
+      if (chkLower.checked) score += 15;
+      if (chkSymbol.checked) score += 20;
+
+      strengthBar.style.width = `${Math.min(score, 100)}%`;
+
+      if (score < 40) {
+        strengthBar.style.backgroundColor = '#ff4444';
+      } else if (score < 70) {
+        strengthBar.style.backgroundColor = '#ffbb33';
+      } else {
+        strengthBar.style.backgroundColor = '#80be00';
+      }
+    }
+
+    btnMinus.addEventListener('click', () => {
+      if (charCount > 4) {
+        charCount--;
+        charCountEl.textContent = charCount;
+        generatePassword();
+      }
+    });
+
+    btnPlus.addEventListener('click', () => {
+      if (charCount < 32) {
+        charCount++;
+        charCountEl.textContent = charCount;
+        generatePassword();
+      }
+    });
+
+    [chkUpper, chkSymbol, chkLower].forEach(checkbox => {
+      checkbox.addEventListener('change', generatePassword);
+    });
+
+    passwordDisplay.addEventListener('click', () => {
+      navigator.clipboard.writeText(passwordDisplay.textContent);
+      alert('Senha copiada para a área de transferência!');
+    });
+
+    generatePassword();
+  </script>
 </body>
 </html>
