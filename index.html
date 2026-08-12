@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Gerador de Senhas</title>
 
     <link rel="stylesheet" href="style.css">
@@ -10,59 +12,86 @@
 
 <body>
 
-    <div class="container">
+    <main class="card-container">
 
-        <div class="card">
-
-            <h1>Gerador de senhas</h1>
-
-            <!-- CAMPO ONDE VOCÊ PODE ESCREVER -->
-            <div class="password-area">
-                <input
-                    type="text"
-                    id="password"
-                    placeholder="Digite sua senha"
-                    autocomplete="off"
-                >
-
-                <button type="button" class="copy-button">
-                    📋
-                </button>
-            </div>
+        <!-- TÍTULO -->
+        <h1 class="title">
+            Gerador de senhas
+        </h1>
 
 
-            <div class="content">
+        <!-- CAMPO DA SENHA -->
+        <div class="password-field">
 
-                <!-- ESQUERDA -->
-                <div class="left">
+            <input
+                type="text"
+                class="password-input"
+                placeholder="Digite sua senha"
+            >
 
-                    <p class="title">
+            <button
+                type="button"
+                class="copy-button"
+                title="Copiar"
+            >
+                📋
+            </button>
+
+        </div>
+
+
+        <!-- CONTEÚDO -->
+        <div class="content-body">
+
+
+            <!-- COLUNA ESQUERDA -->
+            <div class="left-column">
+
+
+                <!-- SEGURANÇA -->
+                <div class="security-section">
+
+                    <label class="label">
                         nível de segurança
-                    </p>
+                    </label>
 
-                    <div class="security-bar">
-                        <div class="security-level"></div>
+                    <div class="strength-bar">
+
+                        <div class="strength-fill"></div>
+
                     </div>
 
+                </div>
 
-                    <p class="title characters-title">
+
+                <!-- NÚMERO DE CARACTERES -->
+                <div class="characters-section">
+
+                    <label class="label">
                         número de caracteres
-                    </p>
+                    </label>
 
-                    <div class="counter">
+                    <div class="counter-control">
 
-                        <button type="button">
+                        <button
+                            type="button"
+                            class="btn-counter"
+                        >
                             −
                         </button>
 
                         <input
                             type="number"
+                            class="counter-input"
                             value="8"
                             min="8"
                             max="32"
                         >
 
-                        <button type="button">
+                        <button
+                            type="button"
+                            class="btn-counter"
+                        >
                             +
                         </button>
 
@@ -70,82 +99,139 @@
 
                 </div>
 
-
-                <!-- DIREITA -->
-                <div class="requirements">
-
-                    <label>
-                        <input
-                            type="checkbox"
-                            checked
-                        >
-
-                        <span class="circle"></span>
-
-                        no mínimo 8 caracteres
-                    </label>
-
-
-                    <label>
-                        <input
-                            type="checkbox"
-                            checked
-                        >
-
-                        <span class="circle"></span>
-
-                        uma letra maiúscula
-                    </label>
-
-
-                    <label>
-                        <input
-                            type="checkbox"
-                            checked
-                        >
-
-                        <span class="circle"></span>
-
-                        um caractere especial,
-                        como @,#,$,!
-                    </label>
-
-
-                    <label>
-                        <input
-                            type="checkbox"
-                            checked
-                        >
-
-                        <span class="circle"></span>
-
-                        uma letra minúscula
-                    </label>
-
-
-                    <label>
-                        <input type="checkbox">
-
-                        <span class="circle"></span>
-
-                        um número
-                    </label>
-
-                </div>
-
             </div>
 
 
-            <button
-                type="button"
-                class="generate"
-            >
-                Gerar senha
-            </button>
+            <!-- COLUNA DIREITA -->
+            <div class="right-column">
+
+                <ul class="requirements-list">
+
+
+                    <li>
+
+                        <label class="check-option">
+
+                            <input
+                                type="checkbox"
+                                checked
+                            >
+
+                            <span class="dot"></span>
+
+                            <span>
+                                no mínimo 8 caracteres
+                            </span>
+
+                        </label>
+
+                    </li>
+
+
+                    <li>
+
+                        <label class="check-option">
+
+                            <input
+                                type="checkbox"
+                                checked
+                            >
+
+                            <span class="dot"></span>
+
+                            <span>
+                                uma letra maiúscula
+                            </span>
+
+                        </label>
+
+                    </li>
+
+
+                    <li>
+
+                        <label class="check-option">
+
+                            <input
+                                type="checkbox"
+                                checked
+                            >
+
+                            <span class="dot"></span>
+
+                            <span>
+                                um caractere especial,<br>
+                                como @,#,$,!
+                            </span>
+
+                        </label>
+
+                    </li>
+
+
+                    <li>
+
+                        <label class="check-option">
+
+                            <input
+                                type="checkbox"
+                                checked
+                            >
+
+                            <span class="dot"></span>
+
+                            <span>
+                                uma letra minúscula
+                            </span>
+
+                        </label>
+
+                    </li>
+
+
+                    <li>
+
+                        <label class="check-option">
+
+                            <input
+                                type="checkbox"
+                            >
+
+                            <span class="dot"></span>
+
+                            <span>
+                                um número
+                            </span>
+
+                        </label>
+
+                    </li>
+
+
+                </ul>
+
+            </div>
 
         </div>
 
-    </div>
+
+        <!-- BOTÃO -->
+        <button
+            type="button"
+            class="generate-button"
+        >
+            Gerar senha
+        </button>
+
+
+    </main>
 
 </body>
+
 </html>
+
+<input
+    type="text"
+    class="password-input"
+    placeholder="Digite sua senha"
+>
