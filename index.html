@@ -1,99 +1,151 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gerador de Senhas</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Senhas</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <main class="container">
+    <div class="container">
 
-    <section class="card">
+        <div class="card">
 
-      <h1>Gerador de senhas</h1>
+            <h1>Gerador de senhas</h1>
 
-      <!-- Senha gerada -->
-      <div class="password-box">
-        <span id="password">Clique em gerar</span>
-        <button id="copyButton" title="Copiar senha">📋</button>
-      </div>
+            <!-- CAMPO ONDE VOCÊ PODE ESCREVER -->
+            <div class="password-area">
+                <input
+                    type="text"
+                    id="password"
+                    placeholder="Digite sua senha"
+                    autocomplete="off"
+                >
 
-      <!-- Configurações -->
-      <div class="settings">
+                <button type="button" class="copy-button">
+                    📋
+                </button>
+            </div>
 
-        <div class="left-column">
 
-          <label for="length">número de caracteres</label>
+            <div class="content">
 
-          <div class="counter">
-            <button id="decrease">−</button>
-            <span id="length">8</span>
-            <button id="increase">+</button>
-          </div>
+                <!-- ESQUERDA -->
+                <div class="left">
 
-          <label for="strength">nível de segurança</label>
+                    <p class="title">
+                        nível de segurança
+                    </p>
 
-          <div class="strength-bar">
-            <div id="strengthProgress"></div>
-          </div>
+                    <div class="security-bar">
+                        <div class="security-level"></div>
+                    </div>
 
-          <span id="strengthText">Fraca</span>
+
+                    <p class="title characters-title">
+                        número de caracteres
+                    </p>
+
+                    <div class="counter">
+
+                        <button type="button">
+                            −
+                        </button>
+
+                        <input
+                            type="number"
+                            value="8"
+                            min="8"
+                            max="32"
+                        >
+
+                        <button type="button">
+                            +
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- DIREITA -->
+                <div class="requirements">
+
+                    <label>
+                        <input
+                            type="checkbox"
+                            checked
+                        >
+
+                        <span class="circle"></span>
+
+                        no mínimo 8 caracteres
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="checkbox"
+                            checked
+                        >
+
+                        <span class="circle"></span>
+
+                        uma letra maiúscula
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="checkbox"
+                            checked
+                        >
+
+                        <span class="circle"></span>
+
+                        um caractere especial,
+                        como @,#,$,!
+                    </label>
+
+
+                    <label>
+                        <input
+                            type="checkbox"
+                            checked
+                        >
+
+                        <span class="circle"></span>
+
+                        uma letra minúscula
+                    </label>
+
+
+                    <label>
+                        <input type="checkbox">
+
+                        <span class="circle"></span>
+
+                        um número
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="generate"
+            >
+                Gerar senha
+            </button>
 
         </div>
 
-        <!-- Requisitos -->
-        <div class="requirements">
-
-          <label class="requirement">
-            <input type="checkbox" id="minLength" checked disabled>
-            <span></span>
-            no mínimo 8 caracteres
-          </label>
-
-          <label class="requirement">
-            <input type="checkbox" id="uppercase" checked>
-            <span></span>
-            uma letra maiúscula
-          </label>
-
-          <label class="requirement">
-            <input type="checkbox" id="special" checked>
-            <span></span>
-            um caractere especial,<br>
-            como @,#,$,!
-          </label>
-
-          <label class="requirement">
-            <input type="checkbox" id="lowercase" checked>
-            <span></span>
-            uma letra minúscula
-          </label>
-
-          <label class="requirement">
-            <input type="checkbox" id="number">
-            <span></span>
-            um número
-
-          </label>
-
-        </div>
-
-      </div>
-
-      <button class="generate-button" id="generate">
-        Gerar senha
-      </button>
-
-      <p id="copyMessage"></p>
-
-    </section>
-
-  </main>
-
-  <script src="script.js"></script>
+    </div>
 
 </body>
 </html>
